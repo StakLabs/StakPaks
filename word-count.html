@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Word Counter - StakPaks</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: #111827;
+        }
+
+        textarea {
+            width: 450px;
+            height: 120px;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            resize: none;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        #password-output {
+            margin-top: 1.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            word-break: break-word;
+            color: #111827;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://staklabs.github.io/Libraries/tako.js"></script>
+    <script>
+        document.body.innerHTML = `
+            <div class="container">
+                <h1>Welcome to StakPak's Word Counter!</h1>
+                <p>Paste your text into the area below!</p>
+                <textarea id="text" placeholder="Enter text"></textarea>
+                <br>
+                <button id="count">Count Words!</button>
+                <p id="amount"></p>
+            </div>
+        `;
+
+        document.getElementById('count').addEventListener('click', function () {
+            const text = document.getElementById('text').value.trim();
+            const wordCount = text === "" ? 0 : text.split(/\s+/).length;
+            document.getElementById('amount').innerText = `${wordCount} word${wordCount !== 1 ? 's' : ''}`;
+        });
+    </script>
+</body>
+</html>
